@@ -1,13 +1,15 @@
 import java.util.Scanner;
-public class DivisionByZero {
+class InsufficientBalanceException extends Exception{
+ InsufficientBalanceException(String msg){super(msg);}
+}
+public class BankWithdrawal{
  public static void main(String[] args){
   Scanner sc=new Scanner(System.in);
-  System.out.print("Enter Dividend: ");
-  int a=sc.nextInt();
-  System.out.print("Enter Divisor: ");
-  int b=sc.nextInt();
-  try{ System.out.println("Result = "+(a/b)); }
-  catch(ArithmeticException e){ System.out.println("Cannot divide by zero."); }
+  double balance=5000, amount=sc.nextDouble();
+  try{
+   if(amount>balance) throw new InsufficientBalanceException("Insufficient Balance");
+   System.out.println("Remaining Balance = "+(balance-amount));
+  }catch(Exception e){System.out.println(e.getMessage());}
   sc.close();
  }
 }
