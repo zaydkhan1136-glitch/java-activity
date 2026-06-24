@@ -1,17 +1,11 @@
-import java.util.Scanner;
-class InvalidPasswordException extends Exception{
- InvalidPasswordException(String msg){super(msg);}
-}
-public class PasswordValidation{
- static void validate(String p) throws InvalidPasswordException{
-  if(p.length()<6) throw new InvalidPasswordException("Password too short");
-  boolean d=false; for(char c:p.toCharArray()) if(Character.isDigit(c)) d=true;
-  if(!d) throw new InvalidPasswordException("Password must contain a digit");
-  System.out.println("Valid Password");
- }
+public class ShapeArea{
+ double area(double r){return 3.14*r*r;}
+ double area(double l,double b){return l*b;}
+ double area(double base,double height,boolean t){return 0.5*base*height;}
  public static void main(String[] args){
-  Scanner sc=new Scanner(System.in);
-  try{validate(sc.nextLine());}catch(Exception e){System.out.println(e.getMessage());}
-  sc.close();
+  ShapeArea s=new ShapeArea();
+  System.out.println("Circle Area = "+s.area(5));
+  System.out.println("Rectangle Area = "+s.area(10,5));
+  System.out.println("Triangle Area = "+s.area(8,6,true));
  }
 }
